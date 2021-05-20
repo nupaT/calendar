@@ -1,0 +1,166 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Prosto+One&display=swap");
+/*Обнуление*/
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*-----------*/
+
+body {
+  font-size: 40px;
+  font-family: "Prosto One", serif;
+}
+
+.container {
+  margin: 0 auto;
+  width: 80%;
+  background-color: #999999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header {
+  margin: 40px 0;
+  text-align: center;
+}
+
+.main {
+  display: flex;
+}
+
+.claendarColumn {
+  flex: 0 1 30%;
+}
+.calendarCard {
+  width: 400px;
+  height: 400px;
+  background-color: #d3d3d3;
+  margin: 40px;
+  border-radius: 20px;
+  box-shadow: 8px 10px 8px 2px rgba(75, 75, 75, 0.8);
+}
+
+.title__row {
+  display: flex;
+  height: 60px;
+  align-items: flex-end;
+  margin: 0 20px 27px 20px;
+}
+
+.month {
+  margin: 0 0 0 20px;
+  font-size: 36px;
+}
+.year {
+  margin: 0 0 0 120px;
+  font-size: 24px;
+}
+
+.change__row {
+  height: 50px;
+  margin: 0 20px 27px;
+  display: flex;
+  justify-content: space-between;
+}
+.prev {
+}
+.next {
+}
+
+.calendar__box {
+  width: 360px;
+  height: 216px;
+  background-color: #505000;
+  display: flex;
+  margin: 0 20px;
+}
+
+.scheduleColumn {
+  background-color: #005500;
+  flex: 1 1 70%;
+}
