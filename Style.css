@@ -160,6 +160,24 @@ body {
   margin: 0 20px;
 }
 
+.day__box {
+  font-size: 18px;
+}
+
+.day__list {
+  display: flex;
+}
+
+.day__list li {
+  /* margin: 0 0 0 20px; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.date__box {
+  font-size: 18px;
+}
+
 .scheduleColumn {
   background-color: #005500;
   flex: 1 1 70%;
