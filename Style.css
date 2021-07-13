@@ -147,9 +147,7 @@ body {
   display: flex;
   justify-content: space-between;
 }
-.prev:hover {
-  cursor: pointer;
-}
+.prev:hover,
 .next:hover {
   cursor: pointer;
 }
@@ -168,19 +166,18 @@ body {
 .week__box {
   display: flex;
   justify-content: space-between;
-  margin: 0 0 10px 0;
+  width: 100%;
 }
 
 .week__box div {
-  width: calc(360px / 7);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  margin: 0 0 10px 0;
 }
 
 .date__box {
   font-size: 18px;
-  background-color: #eee;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -188,11 +185,29 @@ body {
 }
 
 .date__box div {
-  width: calc(340px / 7);
+  width: 30px;
+  height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 20px 10px 0;
+  transition: background-color 0.2s;
+}
+
+.date__box div:hover {
+  background-color: #a1a1a1;
+  border-radius: 7px;
+  border: solid 1px black;
+  cursor: pointer;
+}
+
+.date__box div:nth-child(7n) {
   margin: 0 0 10px 0;
+}
+
+.today {
+  background-color: #84d35e;
+  border-radius: 7px;
 }
 
 .scheduleColumn {
