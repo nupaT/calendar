@@ -146,7 +146,13 @@ body {
   margin: 0 20px 27px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
+
+.day {
+  font-size: 24px;
+}
+
 .prev:hover,
 .next:hover {
   cursor: pointer;
@@ -158,12 +164,13 @@ body {
   margin: 0 20px;
 }
 
-.day__box {
+/* .day__box {
   font-size: 18px;
   display: flex;
-}
+} */
 
 .week__box {
+  font-size: 18px;
   display: flex;
   justify-content: space-between;
   width: 100%;
