@@ -147,35 +147,52 @@ body {
   display: flex;
   justify-content: space-between;
 }
-.prev {
+.prev:hover {
+  cursor: pointer;
 }
-.next {
+.next:hover {
+  cursor: pointer;
 }
 
 .calendar__box {
   width: 360px;
   height: 216px;
-  background-color: #505000;
-  display: flex;
   margin: 0 20px;
 }
 
 .day__box {
   font-size: 18px;
-}
-
-.day__list {
   display: flex;
 }
 
-.day__list li {
-  /* margin: 0 0 0 20px; */
+.week__box {
   display: flex;
   justify-content: space-between;
+  margin: 0 0 10px 0;
+}
+
+.week__box div {
+  width: calc(360px / 7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .date__box {
   font-size: 18px;
+  background-color: #eee;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.date__box div {
+  width: calc(340px / 7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 10px 0;
 }
 
 .scheduleColumn {
