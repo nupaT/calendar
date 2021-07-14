@@ -118,7 +118,7 @@ body {
 }
 .calendarCard {
   width: 400px;
-  height: 400px;
+  height: 450px;
   background-color: #d3d3d3;
   margin: 40px;
   border-radius: 20px;
@@ -207,6 +207,10 @@ body {
 div:nth-child(7n + 6),
 div:nth-child(7n + 7) {
   color: red;
+}
+
+.prev__days {
+  color: #949191;
 }
 
 .today {
