@@ -1,7 +1,7 @@
 const date = new Date();
 
 const renderCalendar = () => {
-  const today = date.getDay();
+  const today = new Date().getDay();
   const month = date.getMonth();
   const year = date.getFullYear();
   const daysNumber = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
