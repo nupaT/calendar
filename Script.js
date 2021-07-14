@@ -1,5 +1,8 @@
 const date = new Date();
 
+// date.setMonth(1);
+// date.setFullYear(2008)
+
 const today = date.getDay();
 const month = date.getMonth();
 const year = date.getFullYear();
@@ -48,6 +51,10 @@ for (let w = 0; w < 7; w++) {
 let monthDays = "";
 
 for (let i = 1; i <= daysNumber; i++) {
-  monthDays += `<div>${i}</div>`;
+  if (i < 10) {
+    monthDays += `<div>0${i}</div>`;  //add 0 in front single digit
+  } else {
+    monthDays += `<div>${i}</div>`;
+  }
   document.querySelector(".date__box").innerHTML = monthDays;
 }

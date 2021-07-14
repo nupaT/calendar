@@ -129,15 +129,15 @@ body {
   display: flex;
   height: 60px;
   align-items: flex-end;
+  justify-content: space-between;
   margin: 0 20px 27px 20px;
 }
 
-.month {
-  margin: 0 0 0 20px;
-  font-size: 36px;
+.day {
+  font-size: 24px;
 }
+
 .year {
-  margin: 0 0 0 120px;
   font-size: 24px;
 }
 
@@ -149,8 +149,8 @@ body {
   align-items: center;
 }
 
-.day {
-  font-size: 24px;
+.month {
+  font-size: 36px;
 }
 
 .prev:hover,
