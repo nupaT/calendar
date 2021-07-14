@@ -15,14 +15,13 @@ const renderCalendar = () => {
   // console.log(lastDayIndex);
 
   const daysLong = [
-    "",
+    "Воскресенье",
     "Понедельник",
     "Вторник",
     "Среда",
     "Четверг",
     "Пятница",
     "Суббота",
-    "Воскресенье",
   ];
 
   const daysShort = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
@@ -55,27 +54,27 @@ const renderCalendar = () => {
   let monthDays = "";
 
   for (let x = firstDayIndex; x > 0; x--) {
-    monthDays += `<div class="prev__days">${prevLastDays - x + 1}</div>`; //add 0 in front single digit
+    monthDays += `<div class="prev__days"  id="day__numb">${prevLastDays - x + 1}</div>`; //add 0 in front single digit
   }
 
   for (let i = 1; i <= daysNumber; i++) {
     if (i === new Date().getDate() && date.getMonth() === new Date().getMonth()) {
       if (i < 10) {
-        monthDays += `<div class="today">0${i}</div>`;
+        monthDays += `<div class="today"  id="day__numb">0${i}</div>`;
       } else {
-        monthDays += `<div class="today">${i}</div>`;
+        monthDays += `<div class="today"  id="day__numb">${i}</div>`;
       }
     } else {
       if (i < 10) {
-        monthDays += `<div>0${i}</div>`;
+        monthDays += `<div id="day__numb">0${i}</div>`;
       } else {
-        monthDays += `<div>${i}</div>`;
+        monthDays += `<div id="day__numb">${i}</div>`;
       }
     }
   }
 
   for (let j = 1; j <= nextDays; j++) {
-    monthDays += `<div class="prev__days">${j}</div>`;
+    monthDays += `<div class="prev__days"  id="day__numb">${j}</div>`;
     document.querySelector(".date__box").innerHTML = monthDays;
   }
 };
@@ -89,5 +88,14 @@ document.querySelector(".next").addEventListener("click", () => {
   date.setMonth(date.getMonth() + 1);
   renderCalendar();
 });
+
+// not working becouse i acces to element before render it
+
+// document.querySelector(".next").addEventListener("click", () => {
+//   document.querySelector(".next").classList.toggle("today");
+//   document.querySelector(".next").classList.toggle("");
+//   console.log("click");
+//   // renderCalendar();
+// });
 
 renderCalendar();
