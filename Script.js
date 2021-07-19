@@ -1,7 +1,6 @@
 const date = new Date();
 
 const renderCalendar = () => {
-  const today = new Date().getDay();
   const month = date.getMonth();
   const year = date.getFullYear();
 
@@ -20,18 +19,7 @@ const renderCalendar = () => {
     day: "numeric",
   }).format(date);
 
-  console.log(lastDayIndex);
-
-  // !!! переделать - убрать вообще массив и ввытянуть длинное название дня недели с помощью date
-  const daysLong = [
-    "Воскресенье",
-    "Понедельник",
-    "Вторник",
-    "Среда",
-    "Четверг",
-    "Пятница",
-    "Суббота",
-  ];
+  // console.log(lastDayIndex);
 
   const daysShort = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
 
@@ -53,7 +41,7 @@ const renderCalendar = () => {
   document.querySelector(".month").innerHTML = months[month];
   document.querySelector(".year").innerHTML = year;
   document.querySelector(".day").innerHTML = Intl.DateTimeFormat("ru", { weekday: "long" }).format(
-    date
+    new Date()
   ); //daysLong[today];
   document.querySelector(".scheduleColumn").innerHTML = dateString;
 
@@ -102,13 +90,13 @@ document.querySelector(".next").addEventListener("click", () => {
   renderCalendar();
 });
 
+renderCalendar();
+
 // not working becouse i acces to element before render it
 
-// document.querySelector(".next").addEventListener("click", () => {
-//   document.querySelector(".next").classList.toggle("today");
-//   document.querySelector(".next").classList.toggle("");
-//   console.log("click");
-//   // renderCalendar();
-// });
-
-renderCalendar();
+document.querySelector("#day__numb").addEventListener("click", () => {
+  document.querySelector("#day__numb").classList.toggle("today");
+  document.querySelector("#day__numb").classList.toggle("");
+  console.log("click");
+  renderCalendar();
+});
