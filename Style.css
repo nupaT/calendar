@@ -216,6 +216,7 @@ div:nth-child(7n + 7) {
 .today {
   background-color: #84d35e;
   border-radius: 7px;
+  border: 1px solid #000;
 }
 
 .scheduleColumn {

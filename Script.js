@@ -1,3 +1,5 @@
+// !!! с началом месяца косяк, меняется начало в зависимости от текущего числа
+
 const date = new Date();
 
 const renderCalendar = () => {
@@ -7,7 +9,7 @@ const renderCalendar = () => {
   const daysNumberMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
   const prevLastDays = new Date(date.getFullYear(), date.getMonth(), 0).getDate();
 
-  const firstDayIndex = date.getDay() + 2; //
+  const firstDayIndex = date.getDay(); //
   const lastDayIndex = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay();
 
   const nextDays = 7 - lastDayIndex;
