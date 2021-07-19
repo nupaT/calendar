@@ -40,9 +40,10 @@ const renderCalendar = () => {
 
   document.querySelector(".month").innerHTML = months[month];
   document.querySelector(".year").innerHTML = year;
+  //display weekday
   document.querySelector(".day").innerHTML = Intl.DateTimeFormat("ru", { weekday: "long" }).format(
     new Date()
-  ); //daysLong[today];
+  );
   document.querySelector(".scheduleColumn").innerHTML = dateString;
 
   let weekDays = "";
@@ -92,11 +93,14 @@ document.querySelector(".next").addEventListener("click", () => {
 
 renderCalendar();
 
-// not working becouse i acces to element before render it
+// ? добавить в функцию вывод даты по которой кликнули
+//function for highlight date for describe event this day
 
-document.querySelector("#day__numb").addEventListener("click", () => {
-  document.querySelector("#day__numb").classList.toggle("today");
-  document.querySelector("#day__numb").classList.toggle("");
-  console.log("click");
-  renderCalendar();
+//selected all elements with id(name) and forEach they
+document.querySelectorAll("#day__numb").forEach((element) => {
+  //add event click for everyone element
+  element.addEventListener("click", () => {
+    //if "click" - toggle class "today"
+    element.classList.toggle("today");
+  });
 });
