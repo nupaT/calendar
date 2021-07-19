@@ -210,7 +210,7 @@ div:nth-child(7n + 7) {
 }
 
 .prev__days {
-  color: #949191;
+  opacity: 50%;
 }
 
 .today {
