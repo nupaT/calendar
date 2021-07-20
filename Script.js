@@ -9,7 +9,8 @@ const renderCalendar = () => {
   const daysNumberMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
   const prevLastDays = new Date(date.getFullYear(), date.getMonth(), 0).getDate();
 
-  const firstDayIndex = date.getDay(); //
+  //get first weekday
+  const firstDayIndex = new Date(date.getFullYear(), date.getMonth(), 0).getDay();
   const lastDayIndex = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay();
 
   const nextDays = 7 - lastDayIndex;
@@ -20,8 +21,6 @@ const renderCalendar = () => {
     month: "long",
     day: "numeric",
   }).format(date);
-
-  // console.log(lastDayIndex);
 
   const daysShort = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
 
