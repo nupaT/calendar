@@ -3,6 +3,7 @@
 const date = new Date();
 
 const renderCalendar = () => {
+  const toDay = new Date();
   const month = date.getMonth();
   const year = date.getFullYear();
 
@@ -20,7 +21,9 @@ const renderCalendar = () => {
     year: "numeric",
     month: "long",
     day: "numeric",
-  }).format(date);
+  }).format(toDay);
+
+  // console.log();
 
   const daysShort = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
 
@@ -80,6 +83,20 @@ const renderCalendar = () => {
     monthDays += `<div class="prev__days"  id="day__numb">${j}</div>`;
     document.querySelector(".date__box").innerHTML = monthDays;
   }
+
+  //function for highlight date for describe event this day
+
+  //selected all elements with id(name) and forEach they
+  document.querySelectorAll("#day__numb").forEach((element) => {
+    //add event click for everyone element\
+
+    element.addEventListener("click", () => {
+      //if "click" - toggle class "today"
+      element.classList.toggle("today");
+      //get value numberDay from element HTML
+      // const dateCheck = element.innerHTML; //?? it's work need to think next
+    });
+  });
 };
 
 document.querySelector(".prev").addEventListener("click", () => {
@@ -95,13 +112,3 @@ document.querySelector(".next").addEventListener("click", () => {
 renderCalendar();
 
 // ? добавить в функцию вывод даты по которой кликнули
-//function for highlight date for describe event this day
-
-//selected all elements with id(name) and forEach they
-document.querySelectorAll("#day__numb").forEach((element) => {
-  //add event click for everyone element
-  element.addEventListener("click", () => {
-    //if "click" - toggle class "today"
-    element.classList.toggle("today");
-  });
-});
