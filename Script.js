@@ -1,5 +1,6 @@
 const date = new Date();
 let toDayOption = new Date();
+const weekDayName = Intl.DateTimeFormat("ru", { weekday: "long" }).format(new Date());
 
 const renderCalendar = () => {
   const toDay = new Date();
@@ -17,7 +18,7 @@ const renderCalendar = () => {
 
   let toDayOption = new Date();
 
-  // console.log();
+  // console.log(firstDayIndex);
 
   const daysShort = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
 
@@ -39,9 +40,7 @@ const renderCalendar = () => {
   document.querySelector(".month").innerHTML = months[month];
   document.querySelector(".year").innerHTML = year;
   //display weekday
-  document.querySelector(".day").innerHTML = Intl.DateTimeFormat("ru", { weekday: "long" }).format(
-    new Date()
-  );
+  document.querySelector(".day").innerHTML = weekDayName;
   // document.querySelector(".scheduleColumn").innerHTML = dateString;
 
   let weekDays = "";
@@ -86,7 +85,7 @@ const renderCalendar = () => {
     element.addEventListener("click", () => {
       //select all elements with class ".today" and remove this class
       document.querySelectorAll(".daySelected").forEach((el) => {
-        //? добавить снятие выделения
+        //? добавить снятие выделения при клике на выделенную дату
         el.classList.remove("daySelected");
       });
       //if "click" - add class "today"
@@ -102,8 +101,14 @@ const renderCalendar = () => {
         month: "long",
         day: "numeric",
       }).format(toDayOption);
+
+      let weekDayNameString = Intl.DateTimeFormat("ru-RU", { weekday: "long" }).format(toDayOption);
       //change date in sheduleColumn
-      document.querySelector(".scheduleColumn").innerHTML = dateString;
+      document.querySelector(".day_today").innerHTML = dateString;
+      //change weekday and add day-week-number
+      document.querySelector(".week_number").innerHTML = `${weekDayNameString} (${Math.ceil(
+        dateCheck / 7
+      )})`;
     });
   });
 };
@@ -120,8 +125,6 @@ document.querySelector(".next").addEventListener("click", () => {
 
 renderCalendar();
 
-// ? добавить в функцию вывод даты по которой кликнули +++
-
 //display dateNow once after load
 
 let dateString = Intl.DateTimeFormat("ru-RU", {
@@ -131,4 +134,7 @@ let dateString = Intl.DateTimeFormat("ru-RU", {
   day: "numeric",
 }).format(date);
 
-document.querySelector(".scheduleColumn").innerHTML = dateString;
+document.querySelector(".day_today").innerHTML = dateString;
+document.querySelector(".week_number").innerHTML = `${weekDayName} (${Math.ceil(
+  date.getDate() / 7
+)})`;
