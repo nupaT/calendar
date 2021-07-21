@@ -90,7 +90,7 @@ const renderCalendar = () => {
       //translate new date to string
       let weekDayNameString = Intl.DateTimeFormat("ru-RU", { weekday: "long" }).format(toDayOption);
       //change date in sheduleColumn
-      document.querySelector(".day_today").innerHTML = displaySelectDate(toDayOption);
+      document.querySelector(".day_today").innerHTML = displayDateSelect(toDayOption);
       //change weekday and add day-week-number
       document.querySelector(".week_number").innerHTML = `${weekDayNameString} (${Math.ceil(
         dateCheck / 7
@@ -98,8 +98,6 @@ const renderCalendar = () => {
     });
   });
 };
-
-displaySelectDate(date);
 
 document.querySelector(".prev").addEventListener("click", () => {
   date.setMonth(date.getMonth() - 1);
@@ -122,7 +120,7 @@ function resetSelect() {
 }
 
 //display dateSelected (toDay default)
-function displaySelectDate(daySelect) {
+function displayDateSelect(daySelect) {
   let dateString = Intl.DateTimeFormat("ru-RU", {
     weekday: "long",
     year: "numeric",
@@ -132,7 +130,7 @@ function displaySelectDate(daySelect) {
   return dateString;
 }
 
-document.querySelector(".day_today").innerHTML = displaySelectDate(date);
+document.querySelector(".day_today").innerHTML = displayDateSelect(date);
 document.querySelector(".week_number").innerHTML = `${weekDayName} (${Math.ceil(
   date.getDate() / 7
 )})`;
