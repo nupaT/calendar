@@ -1,6 +1,7 @@
 // !!! с началом месяца косяк, меняется начало в зависимости от текущего числа
 
 const date = new Date();
+let toDayOption = new Date();
 
 const renderCalendar = () => {
   const toDay = new Date();
@@ -16,14 +17,16 @@ const renderCalendar = () => {
 
   const nextDays = 7 - lastDayIndex;
 
-  const dateString = Intl.DateTimeFormat("ru-RU", {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  }).format(toDay);
+  let toDayOption = new Date();
 
-  // console.log();
+  // let dateString = Intl.DateTimeFormat("ru-RU", {
+  //   weekday: "long",
+  //   year: "numeric",
+  //   month: "long",
+  //   day: "numeric",
+  // }).format(toDayOption);
+
+  // console.log(dateString);
 
   const daysShort = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
 
@@ -48,7 +51,7 @@ const renderCalendar = () => {
   document.querySelector(".day").innerHTML = Intl.DateTimeFormat("ru", { weekday: "long" }).format(
     new Date()
   );
-  document.querySelector(".scheduleColumn").innerHTML = dateString;
+  // document.querySelector(".scheduleColumn").innerHTML = dateString;
 
   let weekDays = "";
   for (let w = 0; w < 7; w++) {
@@ -94,7 +97,18 @@ const renderCalendar = () => {
       //if "click" - toggle class "today"
       element.classList.toggle("today");
       //get value numberDay from element HTML
-      // const dateCheck = element.innerHTML; //?? it's work need to think next
+      const dateCheck = element.innerHTML; //?? it's work need to think next
+      // get new date-value
+      toDayOption = new Date(date.getFullYear(), date.getMonth(), dateCheck);
+      //translate new date to string
+      let dateString = Intl.DateTimeFormat("ru-RU", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }).format(toDayOption);
+      //change date in sheduleColumn
+      document.querySelector(".scheduleColumn").innerHTML = dateString;
     });
   });
 };
@@ -111,4 +125,15 @@ document.querySelector(".next").addEventListener("click", () => {
 
 renderCalendar();
 
-// ? добавить в функцию вывод даты по которой кликнули
+// ? добавить в функцию вывод даты по которой кликнули +++
+
+//display dateNow once after load
+
+let dateString = Intl.DateTimeFormat("ru-RU", {
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+}).format(date);
+
+document.querySelector(".scheduleColumn").innerHTML = dateString;
