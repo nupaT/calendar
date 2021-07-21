@@ -1,5 +1,5 @@
 const date = new Date();
-let toDayOption = new Date();
+const toDayOption = new Date();
 const weekDayName = Intl.DateTimeFormat("ru", { weekday: "long" }).format(new Date());
 
 const renderCalendar = () => {
@@ -15,8 +15,6 @@ const renderCalendar = () => {
   const lastDayIndex = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay();
 
   const nextDays = 7 - lastDayIndex;
-
-  let toDayOption = new Date();
 
   // console.log(firstDayIndex);
 
@@ -93,7 +91,7 @@ const renderCalendar = () => {
       //get value numberDay from element HTML
       const dateCheck = element.innerHTML;
       // get new date-value
-      toDayOption = new Date(date.getFullYear(), date.getMonth(), dateCheck);
+      let toDayOption = new Date(date.getFullYear(), date.getMonth(), dateCheck);
       //translate new date to string
       let dateString = Intl.DateTimeFormat("ru-RU", {
         weekday: "long",
