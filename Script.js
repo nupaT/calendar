@@ -19,14 +19,7 @@ const renderCalendar = () => {
 
   let toDayOption = new Date();
 
-  // let dateString = Intl.DateTimeFormat("ru-RU", {
-  //   weekday: "long",
-  //   year: "numeric",
-  //   month: "long",
-  //   day: "numeric",
-  // }).format(toDayOption);
-
-  // console.log(dateString);
+  // console.log();
 
   const daysShort = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
 
@@ -62,7 +55,7 @@ const renderCalendar = () => {
   let monthDays = "";
 
   for (let x = firstDayIndex; x > 0; x--) {
-    monthDays += `<div class="prev__days"  id="day__numb">${prevLastDays - x + 1}</div>`;
+    monthDays += `<div class="prev__days">${prevLastDays - x + 1}</div>`;
   }
 
   for (let i = 1; i <= daysNumberMonth; i++) {
@@ -83,21 +76,24 @@ const renderCalendar = () => {
   }
 
   for (let j = 1; j <= nextDays; j++) {
-    monthDays += `<div class="prev__days"  id="day__numb">${j}</div>`;
+    monthDays += `<div class="prev__days">0${j}</div>`;
     document.querySelector(".date__box").innerHTML = monthDays;
   }
 
   //function for highlight date for describe event this day
-
+  const daySelected = document.querySelectorAll("#day__numb");
   //selected all elements with id(name) and forEach they
-  document.querySelectorAll("#day__numb").forEach((element) => {
+  daySelected.forEach((element) => {
     //add event click for everyone element\
-
     element.addEventListener("click", () => {
-      //if "click" - toggle class "today"
-      element.classList.toggle("today");
+      //select all elements with class ".today" and remove this class
+      document.querySelectorAll(".daySelected").forEach((el) => {
+        el.classList.remove("daySelected");
+      });
+      //if "click" - add class "today"
+      element.classList.add("daySelected");
       //get value numberDay from element HTML
-      const dateCheck = element.innerHTML; //?? it's work need to think next
+      const dateCheck = element.innerHTML;
       // get new date-value
       toDayOption = new Date(date.getFullYear(), date.getMonth(), dateCheck);
       //translate new date to string
