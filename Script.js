@@ -1,5 +1,3 @@
-// !!! с началом месяца косяк, меняется начало в зависимости от текущего числа
-
 const date = new Date();
 let toDayOption = new Date();
 
@@ -88,6 +86,7 @@ const renderCalendar = () => {
     element.addEventListener("click", () => {
       //select all elements with class ".today" and remove this class
       document.querySelectorAll(".daySelected").forEach((el) => {
+        //? добавить снятие выделения
         el.classList.remove("daySelected");
       });
       //if "click" - add class "today"
