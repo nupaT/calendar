@@ -1,5 +1,4 @@
 const date = new Date();
-const toDayOption = new Date();
 const weekDayName = Intl.DateTimeFormat("ru", { weekday: "long" }).format(new Date());
 
 const renderCalendar = () => {
@@ -81,28 +80,17 @@ const renderCalendar = () => {
   daySelected.forEach((element) => {
     //add event click for everyone element\
     element.addEventListener("click", () => {
-      //select all elements with class ".today" and remove this class
-      document.querySelectorAll(".daySelected").forEach((el) => {
-        //? добавить снятие выделения при клике на выделенную дату
-        el.classList.remove("daySelected");
-      });
-      //if "click" - add class "today"
+      resetSelect();
+      //if "click" - add class "daySelected"
       element.classList.add("daySelected");
       //get value numberDay from element HTML
       const dateCheck = element.innerHTML;
       // get new date-value
       let toDayOption = new Date(date.getFullYear(), date.getMonth(), dateCheck);
       //translate new date to string
-      let dateString = Intl.DateTimeFormat("ru-RU", {
-        weekday: "long",
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      }).format(toDayOption);
-
       let weekDayNameString = Intl.DateTimeFormat("ru-RU", { weekday: "long" }).format(toDayOption);
       //change date in sheduleColumn
-      document.querySelector(".day_today").innerHTML = dateString;
+      document.querySelector(".day_today").innerHTML = displaySelectDate(toDayOption);
       //change weekday and add day-week-number
       document.querySelector(".week_number").innerHTML = `${weekDayNameString} (${Math.ceil(
         dateCheck / 7
@@ -110,6 +98,8 @@ const renderCalendar = () => {
     });
   });
 };
+
+displaySelectDate(date);
 
 document.querySelector(".prev").addEventListener("click", () => {
   date.setMonth(date.getMonth() - 1);
@@ -123,16 +113,26 @@ document.querySelector(".next").addEventListener("click", () => {
 
 renderCalendar();
 
-//display dateNow once after load
+//select all elements with class ".today" and remove this class
+function resetSelect() {
+  document.querySelectorAll(".daySelected").forEach((el) => {
+    //? добавить снятие выделения при клике на выделенную дату
+    el.classList.remove("daySelected");
+  });
+}
 
-let dateString = Intl.DateTimeFormat("ru-RU", {
-  weekday: "long",
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-}).format(date);
+//display dateSelected (toDay default)
+function displaySelectDate(daySelect) {
+  let dateString = Intl.DateTimeFormat("ru-RU", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }).format(daySelect);
+  return dateString;
+}
 
-document.querySelector(".day_today").innerHTML = dateString;
+document.querySelector(".day_today").innerHTML = displaySelectDate(date);
 document.querySelector(".week_number").innerHTML = `${weekDayName} (${Math.ceil(
   date.getDate() / 7
 )})`;
