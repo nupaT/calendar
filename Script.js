@@ -75,9 +75,10 @@ const renderCalendar = () => {
   }
 
   //function for highlight date for describe event this day
-  const daySelected = document.querySelectorAll("#day__numb");
+
   //selected all elements with id(name) and forEach they
-  daySelected.forEach((element) => {
+  const daySelect = document.querySelectorAll("#day__numb");
+  daySelect.forEach((element) => {
     //add event click for everyone element\
     element.addEventListener("click", () => {
       resetSelect();
@@ -92,7 +93,7 @@ const renderCalendar = () => {
       //change date in sheduleColumn
       document.querySelector(".day_today").innerHTML = displayDateSelect(toDayOption);
       //change weekday and add day-week-number
-      document.querySelector(".week_number").innerHTML = `${weekDayNameString} (${Math.ceil(
+      document.querySelector(".week_day_number").innerHTML = `${weekDayNameString} (${Math.ceil(
         dateCheck / 7
       )})`;
     });
@@ -111,7 +112,7 @@ document.querySelector(".next").addEventListener("click", () => {
 
 renderCalendar();
 
-//select all elements with class ".today" and remove this class
+//select all elements with class ".daySelected" and remove this class
 function resetSelect() {
   document.querySelectorAll(".daySelected").forEach((el) => {
     //? добавить снятие выделения при клике на выделенную дату
@@ -120,17 +121,17 @@ function resetSelect() {
 }
 
 //display dateSelected (toDay default)
-function displayDateSelect(daySelect) {
+function displayDateSelect(daySelectNow) {
   let dateString = Intl.DateTimeFormat("ru-RU", {
     weekday: "long",
     year: "numeric",
     month: "long",
     day: "numeric",
-  }).format(daySelect);
+  }).format(daySelectNow);
   return dateString;
 }
 
 document.querySelector(".day_today").innerHTML = displayDateSelect(date);
-document.querySelector(".week_number").innerHTML = `${weekDayName} (${Math.ceil(
+document.querySelector(".week_day_number").innerHTML = `${weekDayName} (${Math.ceil(
   date.getDate() / 7
 )})`;
