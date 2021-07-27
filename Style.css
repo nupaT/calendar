@@ -237,3 +237,8 @@ div:nth-child(7n + 7) {
 .day_today {
   margin: 20px 0;
 }
+
+.event_new {
+  font-size: 80%;
+  justify-content: left;
+}

@@ -1,8 +1,23 @@
 const date = new Date();
 const weekDayName = Intl.DateTimeFormat("ru", { weekday: "long" }).format(new Date());
+const toDay = date.getDate();
+
+let meetingList = {
+  "1 1": [
+    { time: "14:00", event: "Служба Ш" },
+    { time: "15:00", event: "Служба Л" },
+  ],
+  "2 1": [
+    { time: "16:00", event: "Служба D" },
+    { time: "17:00", event: "Служба L" },
+  ],
+  "2 4": [
+    { time: "12:00", event: "Служба h" },
+    { time: "13:00", event: "СлужбаpD" },
+  ],
+};
 
 const renderCalendar = () => {
-  const toDay = new Date();
   const month = date.getMonth();
   const year = date.getFullYear();
 
@@ -92,10 +107,14 @@ const renderCalendar = () => {
       let weekDayNameString = Intl.DateTimeFormat("ru-RU", { weekday: "long" }).format(toDayOption);
       //change date in sheduleColumn
       document.querySelector(".day_today").innerHTML = displayDateSelect(toDayOption);
+      //
+      console.log(new Date(date.getFullYear(), date.getMonth()), getWeekDayName());
+      let dayWeekNumber = getWeekDayName(weekDayNameString, dateCheck);
       //change weekday and add day-week-number
-      document.querySelector(".week_day_number").innerHTML = `${weekDayNameString} (${Math.ceil(
-        dateCheck / 7
-      )})`;
+      // debugger;
+      document.querySelector(".week_number").innerHTML = dayWeekNumber;
+      // dayWeekNumber = `${dayNumberWeekSelect} ${Math.ceil(dateCheck / 7)}`;
+      displayMeteengEvent(dayWeekNumber); //!!!! проверить
     });
   });
 };
@@ -131,7 +150,25 @@ function displayDateSelect(daySelectNow) {
   return dateString;
 }
 
+//!!!! Работает не корректно, при первом вызове кидает ошибку инициализации метода forEach
+function displayMeteengEvent(numDay) {
+  //get array from object events
+  let tempArr = meetingList[numDay]; //!! первести дату в формат "1 1" сейчас "понедельник 1"
+  //sorting tempArr and create new div with value from objects
+  tempArr.forEach(function (item) {
+    let newDiv = document.createElement("div");
+    newDiv.className = "event_new";
+    newDiv.innerHTML = `${item.time} ${item.event}`;
+    document.querySelector(".event").append(newDiv);
+  });
+}
+
 document.querySelector(".day_today").innerHTML = displayDateSelect(date);
-document.querySelector(".week_day_number").innerHTML = `${weekDayName} (${Math.ceil(
-  date.getDate() / 7
-)})`;
+document.querySelector(".week_number").innerHTML = getWeekDayName(weekDayName, toDay);
+
+function getWeekDayName(day, dateSelect) {
+  return `${day} (${Math.ceil(dateSelect / 7)})`;
+}
+// `${day} (${Math.ceil(date.getDate() / 7)})`
+console.log(getWeekDayName(weekDayName, toDay));
+// displayMeteengEvent(a);
