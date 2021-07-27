@@ -141,7 +141,6 @@ function resetSelect() {
   });
 }
 
-//!добавить удаление совещаний предыдущего дня (сейчас все в кучу добавляется)
 //display dateSelected (toDay default)
 function displayDateSelect(daySelectNow) {
   let dateString = Intl.DateTimeFormat("ru-RU", {
@@ -153,6 +152,7 @@ function displayDateSelect(daySelectNow) {
   return dateString;
 }
 
+//!добавить удаление совещаний предыдущего дня (сейчас все в кучу добавляется)
 function displayMeteengEvent(numDay) {
   //get array from object events
   let tempArr = meetingList[numDay];
