@@ -1,17 +1,21 @@
+//? Отложеные баги, не совсем корректно обращаемся к массиву совещаний
+//? хотелось бы по значениям 1 1 (день нелдели) (номер недели)
+//? но так читается лучше - не критично
+
 const date = new Date();
 const weekDayName = Intl.DateTimeFormat("ru", { weekday: "long" }).format(new Date());
 const toDay = date.getDate();
 
 let meetingList = {
-  "1 1": [
+  "понедельник (1)": [
     { time: "14:00", event: "Служба Ш" },
     { time: "15:00", event: "Служба Л" },
   ],
-  "2 1": [
+  "вторник (1)": [
     { time: "16:00", event: "Служба D" },
     { time: "17:00", event: "Служба L" },
   ],
-  "2 4": [
+  "вторник (4)": [
     { time: "12:00", event: "Служба h" },
     { time: "13:00", event: "СлужбаpD" },
   ],
@@ -108,13 +112,11 @@ const renderCalendar = () => {
       //change date in sheduleColumn
       document.querySelector(".day_today").innerHTML = displayDateSelect(toDayOption);
       //
-      console.log(new Date(date.getFullYear(), date.getMonth()), getWeekDayName());
       let dayWeekNumber = getWeekDayName(weekDayNameString, dateCheck);
       //change weekday and add day-week-number
-      // debugger;
       document.querySelector(".week_number").innerHTML = dayWeekNumber;
       // dayWeekNumber = `${dayNumberWeekSelect} ${Math.ceil(dateCheck / 7)}`;
-      displayMeteengEvent(dayWeekNumber); //!!!! проверить
+      displayMeteengEvent(dayWeekNumber);
     });
   });
 };
@@ -139,6 +141,7 @@ function resetSelect() {
   });
 }
 
+//!добавить удаление совещаний предыдущего дня (сейчас все в кучу добавляется)
 //display dateSelected (toDay default)
 function displayDateSelect(daySelectNow) {
   let dateString = Intl.DateTimeFormat("ru-RU", {
@@ -150,10 +153,9 @@ function displayDateSelect(daySelectNow) {
   return dateString;
 }
 
-//!!!! Работает не корректно, при первом вызове кидает ошибку инициализации метода forEach
 function displayMeteengEvent(numDay) {
   //get array from object events
-  let tempArr = meetingList[numDay]; //!! первести дату в формат "1 1" сейчас "понедельник 1"
+  let tempArr = meetingList[numDay];
   //sorting tempArr and create new div with value from objects
   tempArr.forEach(function (item) {
     let newDiv = document.createElement("div");
@@ -169,6 +171,5 @@ document.querySelector(".week_number").innerHTML = getWeekDayName(weekDayName, t
 function getWeekDayName(day, dateSelect) {
   return `${day} (${Math.ceil(dateSelect / 7)})`;
 }
-// `${day} (${Math.ceil(date.getDate() / 7)})`
-console.log(getWeekDayName(weekDayName, toDay));
-// displayMeteengEvent(a);
+
+displayMeteengEvent(getWeekDayName(weekDayName, toDay));
