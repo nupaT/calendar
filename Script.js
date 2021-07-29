@@ -19,6 +19,10 @@ let meetingList = {
     { time: "12:00", event: "Служба h" },
     { time: "13:00", event: "Служба D" },
   ],
+  // "четверг (5)": [
+  //   { time: "12:00", event: " h" },
+  //   { time: "13:00", event: " D" },
+  // ],
 };
 
 const renderCalendar = () => {
@@ -156,13 +160,17 @@ function displayDateSelect(daySelectNow) {
 function displayMeteengEvent(numDay) {
   //get array from object events
   let tempArr = meetingList[numDay];
-  //sorting tempArr and create new div with value from objects
-  tempArr.forEach(function (item) {
-    let newDiv = document.createElement("div");
-    newDiv.className = "event_new";
-    newDiv.innerHTML = `${item.time} ${item.event}`;
-    document.querySelector(".event").append(newDiv);
-  });
+  if (tempArr === undefined) {
+    return;
+  } else {
+    //sorting tempArr and create new div with value from objects
+    tempArr.forEach((item) => {
+      let newDiv = document.createElement("div");
+      newDiv.className = "event_new";
+      newDiv.innerHTML = `${item.time} ${item.event}`;
+      document.querySelector(".event").append(newDiv);
+    });
+  }
 }
 
 document.querySelector(".day_today").innerHTML = displayDateSelect(date);
