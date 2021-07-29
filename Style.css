@@ -204,8 +204,8 @@ body {
   cursor: pointer;
 }
 
-div:nth-child(7n + 6),
-div:nth-child(7n + 7) {
+.date__box div:nth-child(7n + 6),
+.date__box div:nth-child(7n + 7) {
   color: red;
 }
 

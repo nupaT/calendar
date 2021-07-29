@@ -17,7 +17,7 @@ let meetingList = {
   ],
   "вторник (4)": [
     { time: "12:00", event: "Служба h" },
-    { time: "13:00", event: "СлужбаpD" },
+    { time: "13:00", event: "Служба D" },
   ],
 };
 
