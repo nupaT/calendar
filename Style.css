@@ -231,14 +231,30 @@ body {
   flex-direction: column;
   background-color: #005500;
   flex: 1 1 70%;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .day_today {
-  margin: 20px 0;
+  margin: 20px auto;
 }
 
-.event_new {
+.week_number {
+  margin: 0 auto;
+}
+
+.event {
+  margin: 0 30px;
+  display: flex;
+  flex-direction: column;
   font-size: 80%;
-  justify-content: left;
+}
+
+.event div {
+  padding: 5px;
+  border: 1px solid #000000;
+  border-bottom: 0;
+}
+
+.event div:last-child {
+  border-bottom: 1px solid #000000;
 }
