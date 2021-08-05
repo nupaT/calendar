@@ -249,12 +249,26 @@ body {
   font-size: 80%;
 }
 
-.event div {
-  padding: 5px;
+.event__block {
+  display: flex;
   border: 1px solid #000000;
-  border-bottom: 0;
+  border-bottom: none;
 }
 
-.event div:last-child {
-  border-bottom: 1px solid #000000;
+.event__block:last-child {
+  border: 1px solid #000000;
+}
+
+.event__time {
+  flex: 1 1 20%;
+  padding: 10px 30px 10px 10px;
+  border-right: 1px solid #000000;
+  border-bottom: none;
+}
+
+.event__desc {
+  flex: 1 1 80%;
+  padding: 10px 30px 10px 10px;
+  border-bottom: none;
+  border-left: none;
 }

@@ -165,7 +165,7 @@ function displayMeteengEvent(numDay) {
   } else {
     //sorting tempArr and create new div with value from objects
     tempArr.forEach((item) => {
-      newStr += `<div>${item.time} ${item.event}</div>`;
+      newStr += `<div class="event__block"> <div class="event__time">${item.time}</div> <div class="event__desc">${item.event}</div></div>`;
     });
   }
   return (document.querySelector(".event").innerHTML = newStr);
