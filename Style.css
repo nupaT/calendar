@@ -97,7 +97,7 @@ body {
 
 .container {
   margin: 0 auto;
-  width: 80%;
+  width: 90%;
   background-color: #999999;
   display: flex;
   flex-direction: column;
@@ -229,9 +229,8 @@ body {
 .scheduleColumn {
   display: flex;
   flex-direction: column;
-  background-color: #005500;
+  background: linear-gradient(to bottom, #999999, #6b6969);
   flex: 1 1 70%;
-  /* align-items: center; */
 }
 
 .day_today {
@@ -239,7 +238,7 @@ body {
 }
 
 .week_number {
-  margin: 0 auto;
+  margin: 0 auto 20px;
 }
 
 .event {
