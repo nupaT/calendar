@@ -98,10 +98,10 @@ body {
 .container {
   margin: 0 auto;
   width: 90%;
+  height: 100%;
   background-color: #999999;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 .header {
