@@ -91,13 +91,10 @@ const renderCalendar = () => {
   const daysNumberMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
   const prevLastDays = new Date(date.getFullYear(), date.getMonth(), 0).getDate();
 
-  //get first weekday
   const firstDayIndex = new Date(date.getFullYear(), date.getMonth(), 0).getDay();
   const lastDayIndex = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay();
 
   const nextDays = 7 - lastDayIndex;
-
-  // console.log(firstDayIndex);
 
   const daysShort = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
 
@@ -118,9 +115,7 @@ const renderCalendar = () => {
 
   document.querySelector(".month").innerHTML = months[month];
   document.querySelector(".year").innerHTML = year;
-  //display weekday
   document.querySelector(".day").innerHTML = weekDayName;
-  // document.querySelector(".scheduleColumn").innerHTML = dateString;
 
   let weekDays = "";
   for (let w = 0; w < 7; w++) {
@@ -178,7 +173,6 @@ const renderCalendar = () => {
       let dayWeekNumber = getWeekDayName(weekDayNameString, dateCheck);
       //change weekday and add day-week-number
       document.querySelector(".week_number").innerHTML = dayWeekNumber;
-      // dayWeekNumber = `${dayNumberWeekSelect} ${Math.ceil(dateCheck / 7)}`;
       displayMeteengEvent(dayWeekNumber);
     });
   });
@@ -199,7 +193,6 @@ renderCalendar();
 //select all elements with class ".daySelected" and remove this class
 function resetSelect() {
   document.querySelectorAll(".daySelected").forEach((el) => {
-    //? добавить снятие выделения при клике на выделенную дату
     el.classList.remove("daySelected");
   });
 }
