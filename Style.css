@@ -259,8 +259,11 @@ body {
 }
 
 .event__time {
+  display: flex;
   flex: 1 1 20%;
-  padding: 10px 30px 10px 10px;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
   border-right: 1px solid #000000;
   border-bottom: none;
 }
