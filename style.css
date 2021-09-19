@@ -283,6 +283,10 @@ body {
     align-items: center;
   }
 
+  .calendarCard {
+    margin: 0 auto;
+  }
+
   .scheduleColumn {
     /* flex: 1 1 100%; */
     font-size: 70%;
