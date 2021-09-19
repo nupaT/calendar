@@ -116,6 +116,7 @@ body {
 .claendarColumn {
   flex: 0 1 30%;
 }
+
 .calendarCard {
   width: 400px;
   height: 450px;
@@ -235,6 +236,7 @@ body {
 
 .day_today {
   margin: 20px auto;
+  text-align: center;
 }
 
 .week_number {
@@ -273,4 +275,17 @@ body {
   padding: 10px 30px 10px 10px;
   border-bottom: none;
   border-left: none;
+}
+
+@media (max-width: 1090px) {
+  .main {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .scheduleColumn {
+    width: 100%;
+    margin-bottom: 10px;
+    padding-bottom: 30px;
+  }
 }
