@@ -1,63 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <!-- Off Permissions-Policy specially for Goo -->
-  <meta http-equiv="Permissions-Policy" content="interest-cohort=()"/>
-  <title>Calendar</title>
-</head>
-<body>
-  <div class="container">
-    <div class="header">
-      Расписание совещаний
-    </div>
-    <div class="description">
-       <details>
-        <summary>Описание</summary>
-        <p>
-         <ul>
-           <li>Дата берется автоматически с сервера</li>
-           <li>События берутся из объекта в самом js-файле</li>
-           <li>Дни, подсвечение, тусклым некликабельны</li>
-           <li>Вычислается какой по счету день месяца и показываются события этого дня</li>
-         </ul>
-        </p>
-      </details>
-    </div>
-    <div class="main">
-      <div class="claendarColumn">
-        <div class="calendarCard">
-          <div class="title__row">
-            <div class="day"></div>
-            <div class="year">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- Off Permissions-Policy specially for Goo -->
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
+    <title>Calendar</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">Расписание совещаний</div>
+      <div class="description">
+        <details>
+          <summary>Описание</summary>
+          <ul style="1">
+            <li>Дата берется автоматически с сервера</li>
+            <li>События берутся из объекта в самом js-файле</li>
+            <li>Дни, подсвечение, тусклым некликабельны</li>
+            <li>Вычислается, какой по счету день месяца и показываются события этого дня</li>
+          </ul>
+        </details>
+      </div>
+      <div class="main">
+        <div class="claendarColumn">
+          <div class="calendarCard">
+            <div class="title__row">
+              <div class="day"></div>
+              <div class="year"></div>
             </div>
-          </div>
-          <div class="change__row">
-            <div class="prev">
-              <
+            <div class="change__row">
+              <div class="prev"><</div>
+              <div class="month"></div>
+              <div class="next">></div>
             </div>
-            <div class="month"></div>
-            <div class="next">
-              >  
-            </div>
-          </div>
-          <div class="calendar__box">
-            <div class="week__box">
-            </div>
-            <div class="date__box">
+            <div class="calendar__box">
+              <div class="week__box"></div>
+              <div class="date__box"></div>
             </div>
           </div>
         </div>
+        <div class="scheduleColumn">
+          <div class="day_today"></div>
+          <div class="week_number"></div>
+          <div class="event"></div>
+        </div>
+      </div>
     </div>
-    <div class="scheduleColumn">
-      <div class="day_today"></div>
-      <div class="week_number"></div>
-      <div class="event"></div>
-    </div>
-  </div>
-  <script src='script.js'></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
